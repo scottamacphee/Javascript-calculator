@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Voltage Ratio Correction Factor Calculator</h2>
+
+<form>
+System Voltage<br>
+	<input type="number" name="SystemVoltage" id="SV">
+	<br><br>
+
+  VAY:<br>
+  <input type="number" name="VAY" id="VY1">
+  <br>
+  
+  
+  VBY:<br>
+  <input type="number" name="VBY" id="VY2">
+  <br>
+ 
+
+ VCY:<br>
+  <input type="number" name="VCY" id="VY3"><br>
+ 
+
+ VAZ:<br>
+  <input type="number" name="VAZ" id="VZ1">
+  <br>
+  
+  VBZ:<br>
+  <input type="number" name="VBZ" id="VZ2"> 
+  <br>
+  
+  VCZ:<br>
+  <input type="number" name="VCZ" id="VZ3">
+  <br>
+  <br>
+  <button type="button" onclick="calculate()" id="Calculate">Calculate</button>
+  
+</form> 
+<br>
+<p>
+RCFY1 = <span id="VCF1"></span><br><br>
+RCFY2 = <span id="VCF2"></span><br><br>
+RCFY3 = <span id="VCF3"></span><br><br>
+RCFZ1 = <span id="VCF4"></span><br><br>
+RCFZ2 = <span id="VCF5"></span><br><br>
+RCFZ3 = <span id="VCF6"></span><br><br>
+</p>
+
+<script>
+var input = document.getElementById("VZ3");
+input.addEventListener("keyup", function(event){
+	event.preventDefault();
+	if (event.keyCode==13){
+		document.getElementById("Calculate").click();
+		}
+		});
+</script>
+
+<script type="text/javascript">
+function calculate(){
+	var SV=document.getElementById("SV").value; //gets system voltage from input
+
+	var vy1 = document.getElementById("VY1").value;
+	var VCF1 = SV/vy1;
+	var VCF1a = VCF1.toFixed(3); //gets vy1 value from input, calculates VCF, then rounds to 3 decimal places
+	
+	
+	var vy2 = document.getElementById("VY2").value;
+	var VCF2 = SV/vy2;
+	var VCF2a = VCF2.toFixed(3);
+	
+	var vy3 = document.getElementById("VY3").value;
+	var VCF3 = SV/vy3;
+	var VCF3a = VCF3.toFixed(3);
+	
+	var vz1 = document.getElementById("VZ1").value;
+	var VCF4 = SV/vz1;
+	var VCF4a = VCF4.toFixed(3);
+	
+	var vz2 = document.getElementById("VZ2").value;
+	var VCF5 = SV/vz2;
+	var VCF5a = VCF5.toFixed(3);
+	
+	var vz3 = document.getElementById("VZ3").value;
+	var VCF6 = SV/vz3;
+	var VCF6a = VCF6.toFixed(3);
+	
+	document.getElementById("VCF1").innerHTML = VCF1a; //displays VRCFa on the screen rounded to 3 decimal places
+	document.getElementById("VCF2").innerHTML = VCF2a;
+	document.getElementById("VCF3").innerHTML = VCF3a;
+	document.getElementById("VCF4").innerHTML = VCF4a;
+	document.getElementById("VCF5").innerHTML = VCF5a;
+	document.getElementById("VCF6").innerHTML = VCF6a;
+}
+</script>
+
+
+</body>
+</html>
